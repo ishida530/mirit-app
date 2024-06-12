@@ -1,0 +1,32 @@
+.tagNav {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+
+    ul {
+        list-style: none;
+    }
+
+    a {
+        text-decoration: none;
+        font-weight: bold;
+        color: #000;
+        display: flex;
+        gap: 10px;
+
+        &.disabledLink {
+            color: dimgrey;
+            cursor: not-allowed;
+
+            svg {
+                color: dimgrey;
+
+            }
+        }
+    }
+
+    svg {
+        color: purple;
+
+    }
+}

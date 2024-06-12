@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import styles from './app.module.scss';
+import cn from 'classnames'
+import TagSelector from './components/TagSelector/TagSelector';
+import { CiCircleInfo, CiSettings } from "react-icons/ci";
+import { GoTag } from "react-icons/go";
+import { useState } from 'react';
+import { CiUser } from "react-icons/ci";
+import { FaRegMessage } from "react-icons/fa6";
 
 function App() {
+  const [isOpenTagSelector, setIsOpenTagSelector] = useState(false)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={cn(`${styles.app}`)}>
+      <nav className={styles.nav}>
+        <ul>
+          <li>
+            <CiCircleInfo />
+          </li>
+          <li>
+            <FaRegMessage />
+          </li>
+          <li>
+            <CiSettings />
+          </li>
+          <li>
+            <GoTag onClick={() => setIsOpenTagSelector(!isOpenTagSelector)} />
+          </li>
+          <li>
+            <CiUser />
+          </li>
+        </ul>
+      </nav>
+      {isOpenTagSelector && <div className={styles.overlay} />}
+      {isOpenTagSelector && <TagSelector handleClose={() => setIsOpenTagSelector(false)} />}
     </div>
   );
 }

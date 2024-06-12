@@ -1,0 +1,58 @@
+.tagValidator {
+    display: flex;
+    flex-direction: column;
+
+
+    .stepsContainer {
+        display: flex;
+        gap: 10px;
+    }
+
+    .steps {
+        display: flex;
+        gap: 5px;
+        flex-wrap: nowrap;
+        list-style: none;
+        align-items: center;
+    }
+
+    .title {
+        &.error {
+            background-color: #db1414;
+        }
+
+        &.warning {
+            background-color: #dbaa14;
+        }
+
+        &.positive {
+            background-color: #007c00;
+        }
+    }
+
+    .step {
+        width: 15px;
+        height: 3px;
+
+        &.error {
+            background-color: #db1414;
+        }
+
+        &.warning {
+            background-color: #dbaa14;
+        }
+
+        &.positive {
+            background-color: #007c00;
+        }
+
+        background-color: #ddd;
+    }
+
+    .info {
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+}

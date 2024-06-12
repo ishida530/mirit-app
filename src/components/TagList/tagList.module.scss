@@ -1,0 +1,28 @@
+.tagList {
+    list-style: none;
+
+    &:not(.active) {
+        height: 100%;
+    }
+
+    &.active {
+        margin: 10px 0;
+        display: flex;
+        gap: 5px;
+        flex-wrap: wrap;
+        max-height: 80px;
+        overflow-y: auto;
+    }
+
+    &.empty {
+        max-height: unset;
+        height: 100%;
+    }
+
+    .noTags {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-self: center;
+    }
+}

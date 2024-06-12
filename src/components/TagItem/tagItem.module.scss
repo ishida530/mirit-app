@@ -1,0 +1,14 @@
+.tagItem {
+    display: flex;
+    justify-content: space-between;
+    height: 20px;
+
+    label {
+        display: flex;
+        gap: 10px;
+
+        input {
+            width: 15px;
+        }
+    }
+}

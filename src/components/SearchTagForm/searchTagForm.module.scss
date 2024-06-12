@@ -1,0 +1,43 @@
+.form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.input {
+    border: none;
+    background: transparent;
+    outline: transparent;
+    height: 37px;
+}
+
+.searchField {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    font-size: 34px;
+
+    &.height {
+        height: 37px;
+    }
+}
+
+.searchIcon,
+.resetIcon {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.resetIcon {
+    margin-left: auto;
+}
+
+.button {
+    background-color: #005CC8;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: #fff;
+}
