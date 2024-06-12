@@ -1,14 +1,13 @@
+import React, { useState } from 'react';
 import styles from './app.module.scss';
-import cn from 'classnames'
+import cn from 'classnames';
 import TagSelector from './components/TagSelector/TagSelector';
-import { CiCircleInfo, CiSettings } from "react-icons/ci";
+import { CiCircleInfo, CiSettings, CiUser } from "react-icons/ci";
 import { GoTag } from "react-icons/go";
-import { useState } from 'react';
-import { CiUser } from "react-icons/ci";
-import { FaRegMessage } from "react-icons/fa6";
+import { FaRegCircle } from "react-icons/fa"; // Poprawione importy
 
 function App() {
-  const [isOpenTagSelector, setIsOpenTagSelector] = useState(false)
+  const [isOpenTagSelector, setIsOpenTagSelector] = useState(false);
 
   return (
     <div className={cn(`${styles.app}`)}>
@@ -18,21 +17,21 @@ function App() {
             <CiCircleInfo />
           </li>
           <li>
-            <FaRegMessage />
+            <FaRegCircle />
           </li>
           <li>
             <CiSettings />
           </li>
-          <li>
-            <GoTag onClick={() => setIsOpenTagSelector(!isOpenTagSelector)} />
+          <li onClick={() => setIsOpenTagSelector(!isOpenTagSelector)} data-testid="go-tag">
+            <GoTag />
           </li>
           <li>
             <CiUser />
           </li>
         </ul>
       </nav>
-      {isOpenTagSelector && <div className={styles.overlay} />}
-      {isOpenTagSelector && <TagSelector handleClose={() => setIsOpenTagSelector(false)} />}
+      {isOpenTagSelector && <div className={styles.overlay} data-testid="overlay" />}
+      {isOpenTagSelector && <TagSelector handleClose={() => setIsOpenTagSelector(false)} data-testid="tag-selector" />}
     </div>
   );
 }

@@ -27,7 +27,6 @@ const Steps = ({ activeStep }) => {
 }
 
 const TagValidator = ({ activeTagsNumber }) => {
-    console.log(activeTagsNumber);
     useEffect(() => { }, [activeTagsNumber])
 
     return (

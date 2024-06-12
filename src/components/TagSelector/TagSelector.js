@@ -46,10 +46,8 @@ const TagSelector = ({ handleClose }) => {
 
     const onSubmitForm = (e) => {
         e.preventDefault()
-        console.log(list)
         const newSelectedTags = list.filter(tag => tag.isChecked === true)
         setSelectedTags(newSelectedTags)
-        console.log(selectedTags)
         setIsActiveSearch(false)
         setSearchValue('')
     }
@@ -57,10 +55,10 @@ const TagSelector = ({ handleClose }) => {
 
 
     return (
-        <div className={cn(`${styles.tagSelector}`)}>
+        <div className={cn(`${styles.tagSelector}`)} data-testid="tag-selector">
             <div className={cn(`${styles.header}`)}>
                 <p className={cn(`${styles.headline}`)}>Tagi</p>
-                <IoMdClose className={styles.closeIcon} onClick={handleClose} />
+                <IoMdClose className={styles.closeIcon} onClick={handleClose} data-testid="close-icon" />
             </div>
             <SearchTagForm
                 isActiveSearch={isActiveSearch}
