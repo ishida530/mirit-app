@@ -1,9 +1,8 @@
 import Divider from '../Divider/Divider'
 import TagList from '../TagList/TagList'
 import styles from './searchTagForm.module.scss'
-import { IoIosCloseCircle } from "react-icons/io";
-import { CiSearch } from "react-icons/ci";
 import { useSearchTagForm } from '../../hooks/useSearchTagForm';
+import SearchField from '../SearchField/SearchField';
 
 
 
@@ -14,22 +13,11 @@ const SearchTagForm = ({ isActiveSearch, setIsActiveSearch, onSubmit, handleSear
         handleResetValue,
         handleActiveForm
     } = useSearchTagForm(handleSearch, isActiveSearch, searchValue, setIsActiveSearch);
-    
+
     if (isActiveSearch) {
         return (
             <form onSubmit={onSubmit} className={styles.form}>
-                <div className={styles.searchField}>
-                    <CiSearch className={styles.searchIcon} />
-                    <input
-                        type="text"
-                        value={searchValue}
-                        onChange={handleChange}
-                        className={styles.input}
-                        placeholder="Wyszukaj grupę lub tag"
-                    />
-                    <IoIosCloseCircle onClick={handleResetValue} className={styles.resetIcon} />
-
-                </div>
+                <SearchField handleChange={handleChange} handleResetValue={handleResetValue} searchValue={searchValue} resetIcon />
                 <Divider />
                 <TagList list={list} clickItem={handleTagClick} />
                 <button className={styles.button} type='submit'>Zapisz</button>
@@ -37,23 +25,11 @@ const SearchTagForm = ({ isActiveSearch, setIsActiveSearch, onSubmit, handleSear
     } else {
         return (
             <>
-                <div className={styles.searchField}>
-                    <CiSearch className={styles.searchIcon} />
-                    <input
-                        type="text"
-                        value={searchValue}
-                        onChange={handleChange}
-                        className={styles.input}
-                        placeholder="Wyszukaj grupę lub tag"
-                        onClick={handleActiveForm}
-                    />
-
-                </div>
+                <SearchField handleChange={handleChange} handleResetValue={handleResetValue} searchValue={searchValue} handleActiveForm={handleActiveForm} />
                 <Divider />
             </>
         )
     }
-
 }
 
 export default SearchTagForm
