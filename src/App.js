@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import styles from './app.module.scss';
 import cn from 'classnames';
-import TagSelector from './components/TagSelector/TagSelector';
 import { CiCircleInfo, CiSettings, CiUser } from "react-icons/ci";
 import { GoTag } from "react-icons/go";
 import { FaRegCircle } from "react-icons/fa";
+import TagSelectorModal from './components/TagSeLectorModal/TagSelectorModal';
 
 function App() {
   const [isOpenTagSelector, setIsOpenTagSelector] = useState(false);
@@ -30,8 +30,7 @@ function App() {
           </li>
         </ul>
       </nav>
-      {isOpenTagSelector && <div className={styles.overlay} data-testid="overlay" />}
-      {isOpenTagSelector && <TagSelector handleClose={() => setIsOpenTagSelector(false)} data-testid="tag-selector" />}
+      {isOpenTagSelector && <TagSelectorModal isOpen={setIsOpenTagSelector} />}
     </div>
   );
 }
