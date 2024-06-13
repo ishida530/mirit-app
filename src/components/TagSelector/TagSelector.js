@@ -1,58 +1,16 @@
 import styles from './tagSelector.module.scss'
 import cn from 'classnames'
 import { IoMdClose } from "react-icons/io";
-import { useState } from 'react';
-import { tagsList } from '../../dummyData';
 import SearchTagForm from '../SearchTagForm/SearchTagForm';
 import TagList from '../TagList/TagList';
 import Divider from '../Divider/Divider';
 import TagValidator from '../TagValidator/TagValidator';
 import TagNav from '../TagNav/TagNav';
+import { useTagSelector } from '../../hooks/useTagSelector';
 
 
 const TagSelector = ({ handleClose }) => {
-    const [searchValue, setSearchValue] = useState('');
-    const [selectedTags, setSelectedTags] = useState([]);
-    const [list, setList] = useState(tagsList)
-
-    const [isActiveSearch, setIsActiveSearch] = useState(false)
-    const updateCheckedTags = (id) => {
-        return list.map(tag => {
-            if (tag.id === id) {
-                tag.isChecked = !tag.isChecked;
-                return tag;
-            }
-            return tag;
-        });
-    }
-    const handleTagClick = (id) => {
-        setList(updateCheckedTags(id));
-    };
-
-    const handleSearch = (value) => {
-        setSearchValue(value);
-        const filteredList = tagsList.filter(tag =>
-            tag.name.toLowerCase().includes(value.toLowerCase())
-        );
-        setList(filteredList);
-    };
-
-    const handleRemoveTag = (id) => {
-        const updatedList = updateCheckedTags(id)
-        const newSelectedTags = selectedTags.filter(tag => tag.id !== id);
-        setList(updatedList);
-        setSelectedTags(newSelectedTags);
-    }
-
-    const onSubmitForm = (e) => {
-        e.preventDefault()
-        const newSelectedTags = list.filter(tag => tag.isChecked === true)
-        setSelectedTags(newSelectedTags)
-        setIsActiveSearch(false)
-        setSearchValue('')
-    }
-
-
+    const { searchValue, isActiveSearch, handleTagClick, handleSearch, handleRemoveTag, onSubmitForm ,setIsActiveSearch,list,selectedTags} = useTagSelector();
 
     return (
         <div className={cn(`${styles.tagSelector}`)} data-testid="tag-selector">

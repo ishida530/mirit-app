@@ -4,7 +4,7 @@ import cn from 'classnames';
 import TagSelector from './components/TagSelector/TagSelector';
 import { CiCircleInfo, CiSettings, CiUser } from "react-icons/ci";
 import { GoTag } from "react-icons/go";
-import { FaRegCircle } from "react-icons/fa"; // Poprawione importy
+import { FaRegCircle } from "react-icons/fa";
 
 function App() {
   const [isOpenTagSelector, setIsOpenTagSelector] = useState(false);

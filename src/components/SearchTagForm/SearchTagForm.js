@@ -3,29 +3,18 @@ import TagList from '../TagList/TagList'
 import styles from './searchTagForm.module.scss'
 import { IoIosCloseCircle } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
+import { useSearchTagForm } from '../../hooks/useSearchTagForm';
 
 
 
 const SearchTagForm = ({ isActiveSearch, setIsActiveSearch, onSubmit, handleSearch, searchValue, handleTagClick, list }) => {
 
-    const handleChange = (e) => {
-        handleSearch(e.target.value);
-    };
-    const handleResetValue = () => {
-        if (isActiveSearch && searchValue.length === 0) {
-            setIsActiveSearch(false)
-
-        }
-        if (searchValue.length > 0) {
-            handleSearch('');
-
-        }
-    }
-    const handleActiveForm = () => {
-        setIsActiveSearch(true)
-        handleResetValue('')
-    };
-
+    const {
+        handleChange,
+        handleResetValue,
+        handleActiveForm
+    } = useSearchTagForm(handleSearch, isActiveSearch, searchValue, setIsActiveSearch);
+    
     if (isActiveSearch) {
         return (
             <form onSubmit={onSubmit} className={styles.form}>
